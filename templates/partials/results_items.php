@@ -135,7 +135,6 @@
 
 													case "imgHasAlt":
 													case "imgHasAltDeco":
-													case "imgNonDecorativeHasAlt":
 													case "imgAltIsDifferent":
 													case "imgAltIsTooLong":
 														$result_template = 'image_alt';

@@ -136,7 +136,6 @@ switch ($main_action) {
 
             case 'imgHasAlt':
             case 'imgHasAltDeco':
-            case 'imgNonDecorativeHasAlt':
             case 'imgAltIsDifferent':
             case 'imgAltIsTooLong':
                 if (filter_input(INPUT_POST, 'makedeco', FILTER_SANITIZE_STRING) == 'on') {

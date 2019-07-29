@@ -21,6 +21,20 @@ return [
             ',
         ],
         [
+            'name'      => 'headersHaveText',
+            'title'     => 'Headings should contain text',
+            'desc'      => '<p>Sighted and <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> users depend on headings to organize the content on the page. Headings should not be empty and should represent an accurate outline of the content</p>',
+            'resources' => [
+                'Using H1-H6 to Identify Headings <a href="http://www.w3.org/TR/WCAG20-TECHS/H42.html">Article</a>',
+            ],
+            'example'   => '
+                <p class="text-danger">Incorrect</p>
+                <pre><code>'.htmlspecialchars('<h1></h1>').'</code></pre>
+                <p class="text-success">Correct</p>
+                <pre><code>'.htmlspecialchars('<h1>Title</h1>').'</code></pre>
+            ',
+        ],
+        [
             'name'      => 'imgHasAlt',
             'title'     => 'No Alternative Text found.',
             'desc'      => '<p>Alternative Text (Alt Text) is an alternative (non-visual) way to describe the meaning of an image. Please provide a brief description of the image for a <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> user. Note: It should not be the image file name.</p>',
@@ -98,6 +112,16 @@ return [
             ',
         ],
         [
+            'name'      => 'imgGifNoFlicker',
+            'title'     => 'Avoid the use of animated GIFs',
+            'desc'      => '<p>Animated GIFs may cause seizures if they flash more than 3 times per second. A recommendation is to use an alternative format to deliver the content.</p>',
+            'resources' => [
+                'WebAIM: <a href="http://webaim.org/techniques/images/#seizures">Accessible Images</a>',
+                'WCAG Standard: <a href="http://www.w3.org/TR/WCAG20/#seizure-does-not-violate">2.3.1</a>',
+            ],
+            'example'   => '',
+        ],
+        [
             'name'      => 'tableDataShouldHaveTh',
             'title'     => 'No table headers found',
             'desc'      => '<p>Add a table header because it provides a description of the table structure for sighted and <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> users.</p>',
@@ -127,6 +151,17 @@ return [
                 <pre><code>'.htmlspecialchars('<table>'."\n\t".'<tr>'."\n\t\t".'<th scope="col">Heading 1</th>'."\n\t\t".'<th scope="col">Heading 2</th>'."\n\t".'</tr>'."\n\t".'<tr>'."\n\t\t".'<td>Cell 1</td>'."\n\t\t".'<td>Cell 2</td>'."\n\t".'</tr>'."\n".'</table>').'</code></pre>
                 <pre><code>'.htmlspecialchars('<table>'."\n\t".'<tr>'."\n\t\t".'<th scope="row">Heading 1</th>'."\n\t\t".'<td>Cell 1</td>'."\n\t".'</tr>'."\n\t".'<tr>'."\n\t\t".'<th scope="row">Heading 2</th>'."\n\t\t".'<td>Cell 2</td>'."\n\t".'</tr>'."\n".'</table>').'</code></pre>
             ',
+        ],
+        [
+            'name'      => 'videosEmbeddedOrLinkedNeedCaptions',
+            'title'     => 'No <a href="http://webaim.org/techniques/captions/">closed captions</a> found.',
+            'desc'      => '<p>Closed captions should be included in the video to provide dialogue to users who are hearing impaired.  (Please note that videos that have been removed, deleted, or are Unlisted will also cause this error, and will need to be manually verified.)</p>',
+            'resources' => [
+                '<a href="https://support.google.com/youtube/answer/2734796?hl=en">Adding Captions to Youtube</a>',
+                '<a href="http://guides.instructure.com/m/4152/l/98632-how-do-i-create-captions-for-new-or-uploaded-videos-in-canvas">Creating Captions for Video Uploaded to Canvas</a>',
+                'WCAG Standard: <a href="http://www.w3.org/TR/WCAG20/#media-equiv-captions">1.2.2</a>',
+            ],
+            'example'   => '',
         ],
         [
             'name'      => 'cssTextHasContrast',
@@ -160,34 +195,6 @@ return [
     ],
     'suggestion' => [
         [
-            'name'      => 'imgGifNoFlicker',
-            'title'     => 'Avoid the use of animated GIF’s',
-            'desc'      => '<p>Animated GIFs may cause seizures if they flash more than 3 times per second. A recommendation is to use an alternative format to deliver the content.</p>',
-            'resources' => [
-                'WebAIM: <a href="http://webaim.org/techniques/images/#seizures">Accessible Images</a>',
-                'WCAG Standard: <a href="http://www.w3.org/TR/WCAG20/#seizure-does-not-violate">2.3.1</a>',
-            ],
-            'example'   => '',
-        ],
-        [
-            'name'      => 'videosEmbeddedOrLinkedNeedCaptions',
-            'title'     => 'No <a href="http://webaim.org/techniques/captions/">closed captions</a> found.',
-            'desc'      => '<p>Closed captions should be included in the video to provide dialogue to users who are hearing impaired.  (Please note that videos that have been removed, deleted, or are Unlisted will also cause this error, and will need to be manually verified.)</p>',
-            'resources' => [
-                '<a href="https://support.google.com/youtube/answer/2734796?hl=en">Adding Captions to Youtube</a>',
-                '<a href="http://guides.instructure.com/m/4152/l/98632-how-do-i-create-captions-for-new-or-uploaded-videos-in-canvas">Creating Captions for Video Uploaded to Canvas</a>',
-                'WCAG Standard: <a href="http://www.w3.org/TR/WCAG20/#media-equiv-captions">1.2.2</a>',
-            ],
-            'example'   => '',
-        ],
-        [
-            'name'      => 'contentTooLong',
-            'title'     => 'Content length should not exceed 3000 words.',
-            'desc'      => '<p>For content longer than 3000 words, consider splitting it up into multiple documents. This makes it easier for students to process and retain the information.</p>',
-            'resources' => [],
-            'example'   => '',
-        ],
-        [
             'name'      => 'aSuspiciousLinkText',
             'title'     => 'Link text should be descriptive',
             'desc'      => 'Links should be descriptive of the content they\'re linking to, such as "Class Schedule" rather than "schedule.html" or "click here".',
@@ -202,44 +209,6 @@ return [
                 <p class="text-success">Correct</p>
                 <pre><code>'.htmlspecialchars('<a href="http://example.com">read the document</a>').'</code></pre>
             ',
-        ],
-        [
-            'name'      => 'objectTextUpdatesWhenObjectChanges',
-            'title'     => 'The text equivalents (e.g., transcripts and/or captions) for embedded content should update when content changes.',
-            'desc'      => '',
-            'resources' => ['WCAG Standard: <a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv.html">1.2</a>'],
-            'example'   => '',
-        ],
-        [
-            'name'      => 'objectTagDetected',
-            'title'     => 'Multimedia may require plugins to display properly.',
-            'desc'      => 'Multimedia embedded using the "Object" tag may require the user to install a plugin for their web browser. This can create support and access issues for some users. Additionally, users on mobile devices may not be able to view the multimedia content at all. Consider using an alternative format that the user\'s browser can display natively.',
-            'resources' => [],
-            'example'   => '',
-        ],
-        [
-            'name'      => 'headersHaveText',
-            'title'     => 'Headings should contain text',
-            'desc'      => '<p>Sighted and <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> users depend on headings to organize the content on the page. Headings should not be empty and should represent an accurate outline of the content</p>',
-            'resources' => [
-                'Using H1-H6 to Identify Headings <a href="http://www.w3.org/TR/WCAG20-TECHS/H42.html">Article</a>',
-            ],
-            'example'   => '
-                <p class="text-danger">Incorrect</p>
-                <pre><code>'.htmlspecialchars('<h1></h1>').'</code></pre>
-                <p class="text-success">Correct</p>
-                <pre><code>'.htmlspecialchars('<h1>Title</h1>').'</code></pre>
-            ',
-        ],
-        [
-            'name'      => 'noHeadings',
-            'title'     => 'Consider adding headings to your document to create more structure',
-            'desc'      => '<p>If appropriate, add headings to the page to organize the content for sighted and <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> users. The headings should represent an accurate outline of the content</p>',
-            'resources' => [
-                'UCF CDL: <a href="https://cdl.ucf.edu/teach/accessibility/text/">Text Formatting and Document Organization</a>',
-                'WCAG standard <a href="http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic">1.3.1</a> and <a href="http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence">1.3.2</a>',
-            ],
-            'example'   => '',
         ],
         [
             'name'      => 'pNotUsedAsHeader',
@@ -264,6 +233,30 @@ return [
                 <p>This example shows how to use the em and strong elements to emphasize text. The em and strong elements were designed to indicate structural emphasis that may be rendered in a variety of ways (font style changes, speech inflection changes, etc.).</p>
                 <pre><code>...What she <em>really</em> meant to say was, &quot;This is not ok, it is <strong>excellent</strong>&quot;!...</code></pre>
             ',
+        ],
+        [
+            'name'      => 'contentTooLong',
+            'title'     => 'Content length should not exceed 3000 words.',
+            'desc'      => '<p>For content longer than 3000 words, consider splitting it up into multiple documents. This makes it easier for students to process and retain the information.</p>',
+            'resources' => [],
+            'example'   => '',
+        ],
+        [
+            'name'      => 'objectTagDetected',
+            'title'     => 'Multimedia may require plugins to display properly.',
+            'desc'      => 'Multimedia embedded using the "Object" tag may require the user to install a plugin for their web browser. This can create support and access issues for some users. Additionally, users on mobile devices may not be able to view the multimedia content at all. Consider using an alternative format that the user\'s browser can display natively.',
+            'resources' => [],
+            'example'   => '',
+        ],
+        [
+            'name'      => 'noHeadings',
+            'title'     => 'Consider adding headings to your document to create more structure',
+            'desc'      => '<p>If appropriate, add headings to the page to organize the content for sighted and <a href="http://en.wikipedia.org/wiki/Screen_reader">screen reader</a> users. The headings should represent an accurate outline of the content</p>',
+            'resources' => [
+                'UCF CDL: <a href="https://cdl.ucf.edu/teach/accessibility/text/">Text Formatting and Document Organization</a>',
+                'WCAG standard <a href="http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic">1.3.1</a> and <a href="http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence">1.3.2</a>',
+            ],
+            'example'   => '',
         ],
     ],
 ];

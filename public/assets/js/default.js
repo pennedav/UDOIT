@@ -485,7 +485,7 @@ $doc.ready(function() {
 			}
 		}
 
-		if (type == "imgAltIsDifferent" || type == "imgAltIsTooLong" || type == "imgHasAlt" || type == "imgNonDecorativeHasAlt" || type == "imgHasAltDeco") {
+		if (type == "imgAltIsDifferent" || type == "imgAltIsTooLong" || type == "imgHasAlt" || type == "imgHasAltDeco") {
 			var $input = $(this).find('input[name="newcontent"]');
 			var $imgSrc = $(this).find('input[name="errorhtml"]');
 			var makeDeco = $(this).find('input[name="makedeco"]').is(':checked');
