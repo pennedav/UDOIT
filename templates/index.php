@@ -18,6 +18,15 @@
 *	Primary Author Contact:  Jacob Bates <jacob.bates@ucf.edu>
 */
 
+use Gettext\Translator;
+use Gettext\Translations;
+global $ui_locale;
+
+$translator = new Translator();
+$translations = Translations::fromPoFile(__DIR__."/../locales/{$ui_locale}.po");
+$translator->loadTranslations($translations);
+$translator->register();
+
 $settings = [
 	'footer_scripts' => [
 		"//code.jquery.com/jquery-2.1.1.min.js",
@@ -33,21 +42,21 @@ $this->layout('template', $settings);
 
 ?>
 <ul class="nav nav-tabs nav-justified" role="tablist">
-	<li role="presentation" class="active"><a href="#scanner" role="tab" data-toggle="tab">Scan Course</a></li>
-	<li role="presentation"><a href="#cached" role="tab" data-toggle="tab">View Old Reports</a></li>
+	<li role="presentation" class="active"><a href="#scanner" role="tab" data-toggle="tab"><?= __('scanTab'); ?></a></li>
+	<li role="presentation"><a href="#cached" role="tab" data-toggle="tab"><?= __('viewOldTab'); ?></a></li>
 </ul>
 <main id="contentWrapper" role="main">
 	<div class="tab-content">
 		<div class="tab-pane active" id="scanner" role="tabpanel">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<h2>Welcome to <span style="font-weight: normal;">U</span><span style="font-weight: bold;">DO</span><span style="font-weight: normal;">IT</span>!</h2>
+					<h2><?= __('welcomeTitle'); ?></h2>
 
 					<p><?= $welcome_message; ?></p>
 
 					<p><?= $disclaimer_message; ?></p>
 
-					<p class="no-margin"><a href="#udoitInfo" class="btn btn-sm btn-default no-print" data-toggle="modal" data-target="#udoitInfo">What does UDOIT look for?</a></p>
+					<p class="no-margin"><a href="#udoitInfo" class="btn btn-sm btn-default no-print" data-toggle="modal" data-target="#udoitInfo"><?= __('whatLookFor'); ?></a></p>
 				</div>
 			</div>
 			<form class="form-horizontal no-print" id="udoitForm" action="#" role="form">
@@ -58,41 +67,41 @@ $this->layout('template', $settings);
 				<input type="hidden" name="session_context_title" value="<?= $this->escape($launch_params['context_title']); ?>">
 
 				<div class="form-group">
-					<span class="col-sm-2 control-label"><strong>Select content:</strong></span>
+					<span class="col-sm-2 control-label"><strong><?= __('selectContent'); ?></strong></span>
 
 					<div class="col-sm-10">
 						<div class="checkbox">
-							<label><input id="allContent" type="checkbox" value="all" id="allContent" class="content" name="content[]" checked> All</label>
+							<label><input id="allContent" type="checkbox" value="all" id="allContent" class="content" name="content[]" checked> <?= __('all'); ?></label>
 						</div>
 
 						<hr />
 
 						<div class="checkbox">
-							<label><input id="courseAnnouncements" type="checkbox" value="announcements" class="content" name="content[]" checked> Announcements</label>
+							<label><input id="courseAnnouncements" type="checkbox" value="announcements" class="content" name="content[]" checked> <?= __('announcements'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="courseAssignments" type="checkbox" value="assignments" class="content" name="content[]" checked> Assignments</label>
+							<label><input id="courseAssignments" type="checkbox" value="assignments" class="content" name="content[]" checked> <?= __('assignments'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="courseDiscussions" type="checkbox" value="discussions" class="content" class="content" name="content[]" checked> Discussions</label>
+							<label><input id="courseDiscussions" type="checkbox" value="discussions" class="content" class="content" name="content[]" checked> <?= __('discussions'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="courseFiles" type="checkbox" value="files" class="content" name="content[]" checked> Files</label>
+							<label><input id="courseFiles" type="checkbox" value="files" class="content" name="content[]" checked> <?= __('files'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="coursePages" type="checkbox" value="pages" class="content" name="content[]" checked> Pages</label>
+							<label><input id="coursePages" type="checkbox" value="pages" class="content" name="content[]" checked> <?= __('pages'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="courseSyllabus" type="checkbox" value="syllabus" class="content" name="content[]" checked> Syllabus</label>
+							<label><input id="courseSyllabus" type="checkbox" value="syllabus" class="content" name="content[]" checked> <?= __('syllabus'); ?></label>
 						</div>
 
 						<div class="checkbox">
-							<label><input id="moduleUrls" type="checkbox" value="module_urls" class="content" name="content[]" checked> Module URLs</label>
+							<label><input id="moduleUrls" type="checkbox" value="module_urls" class="content" name="content[]" checked> <?= __('moduleUrls'); ?></label>
 						</div>
 					</div>
 				</div>
@@ -100,13 +109,13 @@ $this->layout('template', $settings);
 				<hr />
 
 				<div id="waitMsg" class="alert alert-warning" style="display: none;">
-					<p><span class="glyphicon glyphicon-warning-sign"></span> Please stay on this page while UDOIT scans your course content.</p>
+					<p><span class="glyphicon glyphicon-warning-sign"></span> <?= __('stayOnPage'); ?></p>
 				</div>
 
-				<button type="submit" name="course_submit" class="btn btn-block btn-lg btn-success submit">Scan This Course</button>
+				<button type="submit" name="course_submit" class="btn btn-block btn-lg btn-success submit"><?= __('scanThisCourse'); ?></button>
 
 				<div class="alert alert-danger no-margin margin-top" id="failMsg" style="display: none;">
-					<span class="glyphicon glyphicon-exclamation-sign"></span> <span class="msg">UDOIT failed to scan this course.</span><span class="custom-msg"></span>
+					<span class="glyphicon glyphicon-exclamation-sign"></span> <span class="msg"><?= __('failedToScan'); ?></span><span class="custom-msg"></span>
 				</div>
 			</form>
 		</div>
@@ -121,7 +130,7 @@ $this->layout('template', $settings);
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 
-					<h4 class="modal-title" id="udoitModalLabel">What accessibility issues does UDOIT look for?</h4>
+					<h4 class="modal-title" id="udoitModalLabel"><?= __('whatLookForTitle'); ?></h4>
 				</div>
 				<div class="modal-body">
 					<?= $this->fetch('partials/look_for_modal_list', ['style_classes' => 'errorItem panel panel-danger', 'title' => 'Errors', 'tests' => $udoit_tests['severe']]); ?>
