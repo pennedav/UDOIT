@@ -9,6 +9,10 @@ $oauth2_id = 'test_oauth2_id';
 $oauth2_key = 'test_oauth2_key';
 $oauth2_uri = 'test_oauth2_uri';
 
+// Messages
+$udoit_welcome_message = 'The welcome message.';
+$udoit_disclaimer_message = 'The disclaimer message.';
+
 /* Disable headings check character count */
 $doc_length = '1500';
 

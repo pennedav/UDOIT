@@ -39,6 +39,10 @@ $dsn                = "pgsql:host={$db_host};dbname={$db_name};user={$db_user};p
 $background_worker_enabled = (getenv("WORKER_ENABLED")) == 'true';
 $background_worker_sleep_seconds = 7;
 
+// Messages
+$udoit_welcome_message = getenv('UDOIT_WELCOME_MESSAGE')?:'The Universal Design Online content Inspection Tool (U<strong>DO</strong>IT) was created by the Center for Distributed Learning at the University of Central Florida. U<strong>DO</strong>IT will scan your course content, generate a report and provide instructions on how to correct accessibility issues. Funding for U<strong>DO</strong>IT was provided by a Canvas Grant awarded in 2014.';
+$udoit_disclaimer_message = getenv('UDOIT_DISCLAIMER_MESSAGE')?:'Please Note: This tool is meant to be used as a guide, not a certification. It only checks for common accessibility issues, and is not comprehensive; a clean report in U<strong>DO</strong>IT does not necessarily mean that your course is fully accessible. Likewise, the tool may indicate a possible accessibility issue where one does not exist.';
+
 /* Disable headings check character count */
 $doc_length = getenv('DOC_LENGTH')?:1500;
 
