@@ -85,3 +85,17 @@ $curl_ssl_verify = true; // This should be true for production environments
  * Default false
  */
 $admin_panel_enabled = false;
+
+
+/* Locale
+ *
+ * Allows you to choose the language UDOIT should be presented in.
+ *
+ * Available languages are:
+ *  - en (English)
+ *  - es (Spanish)
+ *
+ * Default "en"
+ */
+
+ $ui_locale = 'en';

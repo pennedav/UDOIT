@@ -57,6 +57,8 @@ $curl_ssl_verify = true;
 
 $admin_panel_enabled = true;
 
+$ui_locale = "en";
+
 // send logs into the phpunit output
 $log_handler = new \Monolog\Handler\TestHandler(null, \Monolog\Logger::WARNING);
 $log_handler->setFormatter(new \Monolog\Formatter\LineFormatter(null, null, true, true));

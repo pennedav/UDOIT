@@ -77,6 +77,10 @@
     "ADMIN_PANEL_ENABLED": {
       "description": "Enable the Admin Panel feature.  False disables access and removes the block from the configuration XML.",
       "value": "false"
+    },
+    "LOCALE": {
+      "description": "The ISO639-1 language used by the UI.",
+      "value": "en"
     }
   },
   "addons": [

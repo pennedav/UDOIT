@@ -116,6 +116,7 @@ class Udoit
     public static function scanContent(array $content_items)
     {
         require_once(__DIR__.'/quail/quail/quail.php');
+        global $ui_locale;
         $report = [];
 
         // Runs each item through the Quail accessibility checker
@@ -124,7 +125,7 @@ class Udoit
                 continue;
             }
 
-            $quail  = new quail($item['content'], 'wcag2aaa', 'string', 'static');
+            $quail  = new quail($item['content'], 'wcag2aaa', 'string', 'static', $ui_locale);
             $quail->runCheck();
             $quail_report = $quail->getReport();
 

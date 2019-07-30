@@ -71,3 +71,5 @@ $curl_ssl_verify = true;
 
 // Admin panel.  False disables access and removes block from XML.
 $admin_panel_enabled = (getenv("ADMIN_PANEL_ENABLED")) == 'true';
+
+$ui_locale = getenv('UI_LOCALE')?:'en';
