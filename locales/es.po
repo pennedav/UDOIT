@@ -18,7 +18,7 @@ msgid "viewOldTab"
 msgstr "Informes Antiguos"
 
 msgid "welcomeTitle"
-msgstr "Bienvenido a <span style=\"font-weight: normal;\">U</span><span style=\"font-weight: bold;\">DO</span><span style=\"font-weight: normal;\">IT</span>!"
+msgstr "¡Bienvenido a <span style=\"font-weight: normal;\">U</span><span style=\"font-weight: bold;\">DO</span><span style=\"font-weight: normal;\">IT</span>!"
 
 msgid "whatLookFor"
 msgstr "¿Qué busca UDOIT?"
