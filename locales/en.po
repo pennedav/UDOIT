@@ -53,6 +53,19 @@ msgstr "Syllabus"
 msgid "moduleUrls"
 msgstr "Module URLs"
 
+msgid "scanfor"
+msgstr "Scan for"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "Error"
+msgstr[1] "Errors"
+
+msgid "suggestion"
+msgid_plural "suggestions"
+msgstr[0] "Suggestion"
+msgstr[1] "Suggestions"
+
 msgid "stayOnPage"
 msgstr "Please stay on this page while UDOIT scans your course content."
 

@@ -74,7 +74,7 @@ $this->layout('template', $settings);
 							<label><input id="allContent" type="checkbox" value="all" id="allContent" class="content" name="content[]" checked> <?= __('all'); ?></label>
 						</div>
 
-						<hr />
+						<br />
 
 						<div class="checkbox">
 							<label><input id="courseAnnouncements" type="checkbox" value="announcements" class="content" name="content[]" checked> <?= __('announcements'); ?></label>
@@ -107,6 +107,30 @@ $this->layout('template', $settings);
 				</div>
 
 				<hr />
+
+				<div class="form-group">
+					<span class="col-sm-2 control-label"><strong><?= __('scanfor'); ?>:</strong></span>
+
+					<div class="col-sm-10">
+
+						<div class="checkbox">
+							<label><input id="allReport" type="checkbox" value="all" id="allReport" class="report" name="report[]" checked> <?= __('all'); ?></label>
+						</div>
+
+						<br />
+
+						<div class="checkbox">
+							<label><input id="errors" type="checkbox" value="errors" class="report" name="report[]" checked> <?= n__('error', 'errors', 2); ?></label>
+						</div>
+
+						<div class="checkbox">
+							<label><input id="suggestions" type="checkbox" value="suggestions" class="report" name="report[]" checked> <?= n__('suggestion', 'suggestions', 2); ?></label>
+						</div>
+					</div>
+
+				</div>
+
+				<br />
 
 				<div id="waitMsg" class="alert alert-warning" style="display: none;">
 					<p><span class="glyphicon glyphicon-warning-sign"></span> <?= __('stayOnPage'); ?></p>

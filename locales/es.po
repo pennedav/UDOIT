@@ -53,6 +53,19 @@ msgstr "Plan de estudio"
 msgid "moduleUrls"
 msgstr "URLs de Módulos"
 
+msgid "scanfor"
+msgstr "Buscar"
+
+msgid "error"
+msgid_plural "errors"
+msgstr[0] "Error"
+msgstr[1] "Errores"
+
+msgid "suggestion"
+msgid_plural "suggestions"
+msgstr[0] "Sugerencia"
+msgstr[1] "Sugerencias"
+
 msgid "stayOnPage"
 msgstr "Permanezca en esta página mientras UDOIT escanea el contenido de su curso."
 
