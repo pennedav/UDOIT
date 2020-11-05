@@ -20,7 +20,7 @@
 
 require_once('../config/settings.php');
 
-$servername = 'https://' . $_SERVER['SERVER_NAME'];
+$servername = 'http://' . $_SERVER['SERVER_NAME'];
 $exploded   = explode('/',$_SERVER['PHP_SELF']);
 $scriptname = @end( $exploded );
 $scriptpath = str_replace($scriptname,'',$_SERVER['PHP_SELF']);
