@@ -42,7 +42,7 @@ if (PHP_VERSION_ID < 70300) {
         'lifetime' => $lifetime,
         'path' => $path,
         'domain' => $domain,
-        //'samesite' => 'None',
+        'samesite' => 'None',
         'secure' => $secure,
         'httponly' => $httponly,
     ]);
