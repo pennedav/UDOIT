@@ -22,6 +22,20 @@ use Httpful\Request;
 
 class Udoit
 {
+    public static function searchCourses($api_key, $canvas_api_url, $search)
+    {
+        $query = http_build_query([
+            'search' => $search,
+            'page' => 1,
+            'per_page' => 5,
+        ]);
+        $url = "{$canvas_api_url}/api/v1/search/all_courses?" . $query;
+        var_dump($url);
+        $r = static::apiGet($url, $api_key)->send();
+        //var_dump($r);
+        return $r;
+    }
+
     /**
      * Retrieves an entire group of content by type and scans it
      * @param string $api_key        API Key of the user were acting as

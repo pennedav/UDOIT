@@ -77,11 +77,13 @@ function reports_compile_summary_data(array $rs) : array
 {
     $out = [];
 
+    // for each report, get result set for it
     foreach ($rs as $r)
     {
-        $rd = reports_get_results($r->id);
+        $results = reports_get_results($r->id);
 
         $course = clone $r;
+        $course->course_name = $results->course_name;
         $course->issues = [];
 
         $ea = [];
@@ -89,7 +91,7 @@ function reports_compile_summary_data(array $rs) : array
         $sa = [];
 
         // loop over each group
-        foreach ($rd as $kind => $d)
+        foreach ($results->results as $kind => $d)
         {
             if ($d === null) {
                 continue;
@@ -165,7 +167,7 @@ function reports_get_latest_for_all(int $days = 10) : array
     return $rs;
 }
 
-function reports_get_results(int $report_id)
+function reports_get_results(int $report_id) : object
 {
     global $db_reports_table;
 
@@ -182,11 +184,12 @@ function reports_get_results(int $report_id)
         throw new RuntimeException("json_decode: '$json_error'");
     }
 
-    $ordered_report_groups = UdoitUtils::instance()->sortReportGroups($report->content);
-    var_dump($ordered_report_groups); exit;
-    return $ordered_report_groups;
+    $ordered_groups = UdoitUtils::instance()->sortReportGroups($report->content);
 
-    //echo json_encode($report, JSON_PRETTY_PRINT) . "\n";
+    return (object) array(
+        'course_name' => $report->course,
+        'results' => $ordered_groups
+    );
 }
 
 function db_exec(PDOStatement $stmt) : void
