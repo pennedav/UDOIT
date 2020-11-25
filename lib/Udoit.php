@@ -22,18 +22,63 @@ use Httpful\Request;
 
 class Udoit
 {
-    public static function searchCourses($api_key, $canvas_api_url, $search)
+    /**
+     * Searches courses via the /api/v1/accounts/:account_id/courses endpoint
+     *
+     * @param string $api_key           API Key of the user were acting as
+     * @param string $canvas_api_url    The base URL of the Canvas API
+     * @param array  $opts              An array of options controlling searching
+     *
+     * Available options:
+     *
+     *  - account_id            (int) account ID to filter by (required)
+     *  - search_term           (string) string to search for (required)
+     *  - search_by             (string) course|faculty (optional) (default: course)
+     *  - enrollment_term_id    (int) the term ID to filter (optional) (default: unset)
+     *  - blueprint             (bool) filter blueprint? (optional) (default: unset)
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return array Results of the search (array of courses)
+     */
+    public static function searchCoursesByAccount($api_key, $canvas_api_url, array $opts)
     {
-        $query = http_build_query([
-            'search' => $search,
-            'page' => 1,
-            'per_page' => 5,
-        ]);
-        $url = "{$canvas_api_url}/api/v1/search/all_courses?" . $query;
-        var_dump($url);
-        $r = static::apiGet($url, $api_key)->send();
-        //var_dump($r);
-        return $r;
+        // required: search_term
+        if (empty($opts['search_term'])) {
+            throw new InvalidArgumentException('required option missing: search_term');
+        }
+
+        // required: account_id
+        if (isset($opts['account_id'])) {
+            $account_id = intval($opts['account_id']);
+        } else {
+            throw new InvalidArgumentException('required option missing: account_id');
+        }
+
+        $query = [
+            'search_by' => strval($opts['search_by'] ?? 'course'),
+            'search_term' => strval($opts['search_term']),
+        ];
+
+        // optional: enrollment_term_id
+        if (($opts['enrollment_term_id'] ?? 0) > 0) {
+            $query['enrollment_term_id'] = intval($opts['enrollment_term_id']);
+        }
+
+        // optional: blueprint
+        if (isset($opts['blueprint'])) {
+            $query['blueprint'] = ($opts['blueprint'] ? 'true' : 'false');
+        }
+
+        $query_s = http_build_query($query);
+
+        $url = "{$canvas_api_url}/api/v1/accounts/{$account_id}/courses?" . $query_s . '&';
+        // NOTE : The & at the end of the above URL is needed to workaround a bug
+        // in the apiGetAllLinks() class method which assumes that the argument
+        // separator is at the end of the URL string (otherwise will result in
+        // continuing to request the same page over and over: the URL will be
+        // syntactically correct, but semantically incorrect)
+        return static::apiGetAllLinks($api_key, $url);
     }
 
     /**
